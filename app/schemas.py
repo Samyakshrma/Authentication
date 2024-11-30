@@ -13,3 +13,14 @@ class UserInDB(BaseModel):
     username: str
     email: str
     hashed_password: str
+
+from pydantic import BaseModel
+
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+
+    class Config:
+        # This will allow the model to parse data from the client (e.g. by not requiring extra fields).
+        orm_mode = True
